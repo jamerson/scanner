@@ -1,0 +1,15 @@
+{
+  "name": "scanner",
+  "version": "0.0.1",
+  "description": "",
+  "main": "scanner.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^3.4.1"
+  }
+}
