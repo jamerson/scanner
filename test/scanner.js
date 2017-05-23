@@ -258,4 +258,31 @@ describe('Scanner', function() {
   describe('nextBoolean', function() {
     
   });
+  describe('next', function() {
+    it('string with two integers', function() {
+      var scanner = Scanner('12 13')
+      var [a, b] = scanner.next('i','i')
+      assert.strictEqual(a,12)
+      assert.strictEqual(b,13)
+    });
+    it('string with two integers, blank-spaces and new-lines', function() {
+      var scanner = Scanner(` 12 ${os.EOL} 13 `)
+      var [a, b] = scanner.next('i','i')
+      assert.strictEqual(a,12)
+      assert.strictEqual(b,13)
+    });
+    it('string with wrong number of value', function() {
+      var scanner = Scanner('12 13')
+      var [a, b, c] = scanner.next('i','i', 'i')
+      assert.strictEqual(a,12)
+      assert.strictEqual(b,13)
+      assert.isUndefined(c)
+    });
+    it('string with mixed types', function() {
+      var scanner = Scanner('12 13')
+      var [a, b] = scanner.next('i','s')
+      assert.strictEqual(a,12)
+      assert.strictEqual(b,'13')
+    });
+  });
 });

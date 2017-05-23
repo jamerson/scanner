@@ -67,5 +67,18 @@ module.exports = (input, cursor = 0) => {
         nextFloat: function () {
             return baseNext(parseFloat)
         },
+        next: function() {
+            let possible_items = {
+                'i': this.nextInt,
+                's': this.nextString,
+                'f': this.nextFloat
+            }
+            let result = []
+            var args = Array.prototype.slice.call(arguments);
+            for (var i = 0; i < args.length; i++) {
+                if(this.hasNext()) result.push(possible_items[arguments[i]]())
+            }
+            return result
+        }
     };
 };
